@@ -1,0 +1,68 @@
+pre {
+    background: #000000;
+}
+code {
+    font-family: "Consolas", "Courier New", "monospace";
+    tab-size: 4;
+}
+.Red {
+    color: #f92672;
+}
+.comment {
+    color: #757150;
+}
+.action {
+    font-style: italic;
+    color: #66d9ef;
+}
+.function {
+    font-style: italic;
+    color: #66d9ef;
+}
+.native {
+    color: #f92672;
+}
+.routine {
+    color: #66d9ef;
+}
+.op {
+    color: #f92672;
+}
+.refinement {
+    font-style: italic;
+    color: #66d9ef;
+}
+.char {
+    color: #ae81ff
+}
+.string {
+    color: #e6db74;
+}
+.issue {
+    color: #e6db74;
+}
+.file {
+    color: #e6db74;
+}
+.pair {
+    color: #ae81ff;
+}
+.numbers {
+    color: #ae81ff;
+}
+.datatype {
+    font-style: italic;
+    color: #66d9ef;
+}
+.setters {
+    color: #FFFFFF;
+}
+.get-word {
+    color: #ae81ff;
+}
+.lit-word {
+    color: #ae81ff;
+}
+.others {
+    color: #FFFFFF;
+}
