@@ -1,5 +1,3 @@
-<link href="./css/monokai_extended.css" rel="stylesheet" type="text/css" media="all" />
-
 # RedLight
 Simple syntax highlighted html generator for Red.
 Highlighted by css, sample css files in the 'css' folder.
