@@ -31,6 +31,7 @@ htmlize https://raw.githubusercontent.com/koba-yu/RedStudy/master/Samples/check-
 ```
 
 With `/header` refinement, the html would contain header tag and css reference that was specified by `css` word.
+(Currently it expects the css file exists on the same folder of the html.)
 
 ```red
 htmlize/header {test: 1
