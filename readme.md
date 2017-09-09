@@ -1,6 +1,6 @@
 # RedLight
-Simple syntax highlighted html generator for Red.
-Highlighted by css, sample css files in the 'css' folder.
+Simple syntax highlighted html generator for Red.  
+Highlighting is done by css, and sample css files in the 'css' folder.
 
 ## Example
 ![example image](./images/example.JPG)
@@ -20,6 +20,8 @@ htmlize {test: 1
 print test
 ; console shows 1}
 ```
+
+without `/header` refinement, you need to set css on the html manually.
 
 Also source file and url can be used.
 
