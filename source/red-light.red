@@ -5,4 +5,4 @@ Red [
 	Tabs:	 4
 ]
 
-to-html: do %./htmlizer.red
+to-html: get in context [to-html: do %./htmlizer.red] 'to-html
