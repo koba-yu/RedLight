@@ -16,8 +16,9 @@ keywords: make map! collect [foreach line lines [
 put keywords "Red" "Red"
 
 space-tab: charset reduce [space tab]
-speces: [some space-tab]
+spaces: [some space-tab]
 cr-lf: charset reduce [cr lf]
+word-breaker: [spaces | cr-lf]
 
 num: charset ["0123456789"]
 integer: [some num]
@@ -25,30 +26,25 @@ float: [some num "." some num]
 numbers: [float | integer]
 pair: [integer "x" integer]
 
-word-letter: charset ["0123456789" #"a" - #"z" #"A" - #"Z" "-" "." "_" "=" "<" ">" "+" "-" "|"]
-string-char: union word-letter charset reduce ["!" "/" " " "　" ":" "(" ")" "." "," "-" "#" "%" "?" "'" "[" "]" ";" tab]
-char: [{#"} string-char {"}]
-others: [some string-char]
-
-issue: ["#" others]
-file: ["%" others]
-curly-braces: charset ["{" "}"]
-quote-string: compose [{"} any (union string-char curly-braces) {"}]
-double-quote: charset [{"}]
-curly-string: compose ["{" any (union union string-char cr-lf double-quote) "}"]
+char: [{#"} thru {"}]
+issue: ["#" to word-breaker]
+file: ["%" to word-breaker | {%"} thru {"} ]
+quote-string: [{"} thru {"}]
+curly-string: ["{" thru "}"]
 string: [quote-string | curly-string]
 
+word-letter: charset ["0123456789" #"a" - #"z" #"A" - #"Z" "-" "." "_" "=" "<" ">" "+" "-" "|"]
 word-letters: [some word-letter "?" | some word-letter]
 set-word: [word-letters ":"]
-get-word: [":" word-letters]
-lit-word: ["'" word-letters]
+get-word: [":" to word-breaker]
+lit-word: ["'" to word-breaker]
 setters: ["/" set-word | set-word]
 
-refine-or-path: ["/" get-word | "/" word-letters]
-datatype: [word-letters "!"]
+refine-or-path: ["/" get-word | "/" to word-breaker]
+datatype: [some not word-breaker "!"]
 brackets: ["#(" | "(" | ")" | "[" | "]"]
 
-comment: [";" any others cr-lf]
+comment: [";" thru cr-lf]
 
 get-tag: function [val type] [
 	keyword-type: select keywords val
@@ -64,7 +60,7 @@ to-html: function ["Create syntax highlighted html from Red code"
 	data: either (type? code) = string! [code] [read code]
 	ret: parse data [collect [any [
 				copy val comment keep (get-tag val 'comment)
-				| keep speces
+				| keep spaces
 				| keep cr-lf
 				| copy val char keep (get-tag val 'char)
 				| copy val string keep (get-tag val 'string)
