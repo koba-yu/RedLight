@@ -5,7 +5,7 @@ Red [
 	Tabs:	 4
 ]
 
-func-maker: context [
+htmlizer: context [
 	lines: split what/buffer lf
 	keywords: make map! collect [foreach line lines [
 			trim/head line
@@ -97,4 +97,4 @@ func-maker: context [
 ]
 
 ; returns to-html function
-get in func-maker 'to-html
+get in htmlizer 'to-html
