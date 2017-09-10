@@ -36,5 +36,5 @@ With `/header` refinement, the html would contain header tag and css reference t
 ```red
 to-html/header {test: 1
 print test
-; console shows 1} "monokai_extended" ; css name to be used.
+; console shows 1} 'monokai_extended ; css name to be used.
 ```
