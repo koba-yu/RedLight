@@ -56,7 +56,7 @@ func-maker: context [
 		rejoin [{<span class="} either keyword-type = none [type] [keyword-type] {">} val {</span>}]
 	]
 
-	htmlize: function ["Create syntax highlighted html from Red code."
+	to-html: function ["Create syntax highlighted html from Red code."
 		code [string! file! url!] "Red code or source file."
 		/header "Make html with header."
 			css [string! word!] "Css file name set into the html."
@@ -96,5 +96,5 @@ func-maker: context [
 	]
 ]
 
-; returns htmlize function
-get in func-maker 'htmlize
+; returns to-html function
+get in func-maker 'to-html

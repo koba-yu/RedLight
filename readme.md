@@ -7,34 +7,34 @@ Highlighting is done by css, and sample css files in the 'css' folder.
 
 ## Usage
 
-The code below introduces `htmlize` function.
+The code below introduces `to-html` function.
 
 ```red
 do %red-light.red
 ```
 
-`htmlize` generates string of `pre` and `code` tag data include the argument code.
+`to-html` generates string of `pre` and `code` tag data include the argument code.
 
 ```red
-htmlize {test: 1
+to-html {test: 1
 print test
 ; console shows 1}
 ```
 
-without `/header` refinement, you need to set css on the html manually.
+without `/header` refinement, you need to set css reference on the html manually.
 
 Also source file and url can be used.
 
 ```red
-htmlize %check-folder-or-file.red
-htmlize https://raw.githubusercontent.com/koba-yu/RedStudy/master/Samples/check-folder-or-file.red
+to-html %check-folder-or-file.red
+to-html https://raw.githubusercontent.com/koba-yu/RedStudy/master/Samples/check-folder-or-file.red
 ```
 
-With `/header` refinement, the html would contain header tag and css reference that was specified by `css` word.
+With `/header` refinement, the html would contain header tag and css reference that was specified by `css` word.  
 (Currently it expects the css file exists on the same folder of the html.)
 
 ```red
-htmlize/header {test: 1
+to-html/header {test: 1
 print test
 ; console shows 1} "monokai_extended" ; css name to be used.
 ```

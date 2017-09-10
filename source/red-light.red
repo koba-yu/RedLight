@@ -5,4 +5,4 @@ Red [
 	Tabs:	 4
 ]
 
-htmlize: do %./htmlizer.red
+to-html: do %./htmlizer.red
