@@ -48,7 +48,7 @@ comment: [";" thru cr-lf]
 
 get-tag: function [val type] [
 	keyword-type: select keywords val
-	rejoin [{<span class="} either keyword-type = none [type] [keyword-type] {">} val {</span>}]
+	rejoin [{<span class="} either keyword-type [keyword-type] [type] {">} val {</span>}]
 ]
 
 to-html: function ["Create syntax highlighted html from Red code"
