@@ -46,6 +46,8 @@ get-word: [":" to word-breaker]
 lit-word: ["'" to word-breaker]
 setters: ["/" set-word | set-word]
 
+email: [word-letters "@" word-letters]
+
 refine-or-path: ["/" get-word | "/" to word-breaker]
 datatype: [some not word-breaker "!"]
 brackets: ["#(" | "(" | ")" | "[" | "]"]
@@ -75,6 +77,7 @@ to-html: function ["Create syntax highlighted html from Red code"
 				| copy val ["true" | "false"] keep (get-tag val 'logic)
 				| copy val date keep (get-tag val 'date)
 				| copy val time keep (get-tag val 'time)
+				| copy val email keep (get-tag val 'email)
 				| copy val setters keep (get-tag val 'setters)
 				| copy val refine-or-path keep (get-tag val 'refinement)
 				| copy val ["//" | "/"] keep (get-tag val 'op)
