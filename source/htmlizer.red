@@ -50,7 +50,7 @@ setters: ["/" set-word | set-word]
 email: [word-letters "@" word-letters]
 
 refine-or-path: ["/" get-word | "/" to word-breaker]
-datatype: [some not word-breaker "!"]
+datatype: [word-letters "!"]
 brackets: ["#(" | "(" | ")" | "[" | "]"]
 
 comment: [";" thru cr-lf]
