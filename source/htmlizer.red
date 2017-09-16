@@ -25,6 +25,11 @@ integer: [some num]
 float: [some num "." some num]
 numbers: [float | integer]
 pair: [integer "x" integer]
+date-separator: charset [#"-" #"/"]
+time-separator: charset ":"
+date: [some num date-separator some num date-separator some num]
+time-pattern: [some num ":" some num ":" some num]
+time: ["T" time-pattern | time-pattern]
 
 char: [{#"} thru {"}]
 issue: ["#" to word-breaker]
@@ -34,7 +39,8 @@ curly-string: ["{" thru "}"]
 string: [quote-string | curly-string]
 
 word-letter: charset ["0123456789" #"a" - #"z" #"A" - #"Z" "-" "." "_" "=" "<" ">" "+" "-" "|" "*"]
-word-letters: [some word-letter "?" | some word-letter]
+word-letters: [some word-letter]
+word: [word-letters "?" | word-letters]
 set-word: [word-letters ":"]
 get-word: [":" to word-breaker]
 lit-word: ["'" to word-breaker]
@@ -67,6 +73,8 @@ to-html: function ["Create syntax highlighted html from Red code"
 				| copy val issue keep (get-tag val 'issue)
 				| copy val file keep (get-tag val 'file)
 				| copy val ["true" | "false"] keep (get-tag val 'logic)
+				| copy val date keep (get-tag val 'date)
+				| copy val time keep (get-tag val 'time)
 				| copy val setters keep (get-tag val 'setters)
 				| copy val refine-or-path keep (get-tag val 'refinement)
 				| copy val ["//" | "/"] keep (get-tag val 'op)
@@ -76,7 +84,7 @@ to-html: function ["Create syntax highlighted html from Red code"
 				| copy val datatype keep (get-tag val 'datatype)
 				| copy val get-word keep (get-tag val 'get-word)
 				| copy val lit-word keep (get-tag val 'lit-word)
-				| copy val word-letters  keep (get-tag val 'others)
+				| copy val word keep (get-tag val 'others)
 			]
 		]
 	]
