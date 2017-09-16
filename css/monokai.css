@@ -1,5 +1,6 @@
 pre {
     background: #000000;
+    overflow-x: auto;
 }
 code {
     font-family: "Consolas", "Courier New", "monospace";
