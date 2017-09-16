@@ -23,7 +23,7 @@ word-breaker: [spaces | cr-lf]
 num: charset ["0123456789"]
 integer: [some num]
 float: [some num "." some num]
-numbers: [float | integer]
+numbers: ["-" float | "-" integer | float | integer]
 pair: [integer "x" integer]
 date-separator: charset [#"-" #"/"]
 time-separator: charset ":"
@@ -70,6 +70,7 @@ to-html: function ["Create syntax highlighted html from Red code"
 				copy val comment keep (get-tag val 'comment)
 				| keep spaces
 				| keep cr-lf
+				| copy val brackets keep (get-tag val 'others)
 				| copy val char keep (get-tag val 'char)
 				| copy val string keep (get-tag val 'string)
 				| copy val issue keep (get-tag val 'issue)
@@ -81,7 +82,6 @@ to-html: function ["Create syntax highlighted html from Red code"
 				| copy val setters keep (get-tag val 'setters)
 				| copy val refine-or-path keep (get-tag val 'refinement)
 				| copy val ["//" | "/"] keep (get-tag val 'op)
-				| copy val brackets keep (get-tag val 'others)
 				| copy val pair keep (get-tag val 'pair)
 				| copy val numbers keep (get-tag val 'numbers)
 				| copy val datatype keep (get-tag val 'datatype)
