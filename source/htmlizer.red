@@ -32,7 +32,7 @@ date: [some num date-separator some num date-separator some num]
 time-pattern: [some num ":" some num ":" some num]
 time: ["T" time-pattern | time-pattern]
 
-char: [{#"} thru {"}]
+char: [{#"^^""} | {#"} thru {"}]
 issue: ["#" to word-breaker]
 file: ["%" to word-breaker | {%"} thru {"} ]
 quote-string: [{"} thru {"}]
@@ -55,8 +55,10 @@ brackets: ["#(" | "(" | ")" | "[" | "]"]
 
 comment: [";" thru cr-lf]
 
+esc-chars: make hash! [#"^"" "&quot;" #"&" "&amp;" #"<" "&lt;" #">" "&gt;"]
 get-tag: function [val type] [
 	keyword-type: select keywords val
+	val: rejoin collect [foreach c val [keep either esc: select esc-chars c [esc][c]]]
 	rejoin [{<span class="} either keyword-type [keyword-type] [type] {">} val {</span>}]
 ]
 
