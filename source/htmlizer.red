@@ -33,7 +33,7 @@ quote-string: [{"} thru {"}]
 curly-string: ["{" thru "}"]
 string: [quote-string | curly-string]
 
-word-letter: charset ["0123456789" #"a" - #"z" #"A" - #"Z" "-" "." "_" "=" "<" ">" "+" "-" "|"]
+word-letter: charset ["0123456789" #"a" - #"z" #"A" - #"Z" "-" "." "_" "=" "<" ">" "+" "-" "|" "*"]
 word-letters: [some word-letter "?" | some word-letter]
 set-word: [word-letters ":"]
 get-word: [":" to word-breaker]
@@ -66,8 +66,10 @@ to-html: function ["Create syntax highlighted html from Red code"
 				| copy val string keep (get-tag val 'string)
 				| copy val issue keep (get-tag val 'issue)
 				| copy val file keep (get-tag val 'file)
+				| copy val ["true" | "false"] keep (get-tag val 'logic)
 				| copy val setters keep (get-tag val 'setters)
 				| copy val refine-or-path keep (get-tag val 'refinement)
+				| copy val ["//" | "/"] keep (get-tag val 'op)
 				| copy val brackets keep (get-tag val 'others)
 				| copy val pair keep (get-tag val 'pair)
 				| copy val numbers keep (get-tag val 'numbers)
