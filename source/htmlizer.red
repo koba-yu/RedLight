@@ -24,6 +24,7 @@ num: charset ["0123456789"]
 integer: [some num]
 float: [some num "." some num]
 numbers: ["-" float | "-" integer | float | integer]
+percent: [numbers "%"]
 pair: [integer "x" integer]
 date-separator: charset [#"-" #"/"]
 time-separator: charset ":"
@@ -83,6 +84,7 @@ to-html: function ["Create syntax highlighted html from Red code"
 				| copy val refine-or-path keep (get-tag val 'refinement)
 				| copy val ["//" | "/"] keep (get-tag val 'op)
 				| copy val pair keep (get-tag val 'pair)
+				| copy val percent keep (get-tag val 'percent)
 				| copy val numbers keep (get-tag val 'numbers)
 				| copy val datatype keep (get-tag val 'datatype)
 				| copy val get-word keep (get-tag val 'get-word)
