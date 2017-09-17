@@ -1,8 +1,8 @@
 Red [
-	Title: "html generation main logic"
-	File: %htmlizer.red
-	Author: "Koba-yu"
-	Tabs:	 4
+	Title:	"html generation main logic"
+	File:	%htmlizer.red
+	Author:	"Koba-yu"
+	Tabs:	4
 ]
 
 lines: split what/buffer lf
@@ -53,7 +53,7 @@ refine-or-path: ["/" get-word | "/" to word-breaker]
 datatype: [word-letters "!"]
 brackets: ["#(" | "(" | ")" | "[" | "]"]
 
-comment: [";" thru cr-lf]
+comment: [";" to cr-lf]
 
 esc-chars: make hash! [#"^"" "&quot;" #"&" "&amp;" #"<" "&lt;" #">" "&gt;"]
 get-tag: function [val type] [
@@ -68,8 +68,9 @@ to-html: function ["Create syntax highlighted html from Red code"
 		css [string! word!] "Css file name set into the html"
 	return: [string!] "Converted html string"
 ] [
-	data: either (type? code) = string! [code] [read code]
-	ret: parse data [collect [any [
+	unless equal? type? code string! [code: read code]
+
+	ret: parse code [collect [any [
 				copy val comment keep (get-tag val 'comment)
 				| keep spaces
 				| keep cr-lf
