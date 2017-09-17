@@ -1,84 +1,39 @@
-pre {
+pre
+{
     background: #000000;
     overflow-x: auto;
 }
-code {
+code
+{
     font-family: "Consolas", "Courier New", "monospace";
     tab-size: 4;
 }
-.Red {
+.Red,.native,.op
+{
     color: #f92672;
 }
-.comment {
+.comment
+{
     color: #757150;
 }
-.action {
+.action,.function,.refinement,.datatype
+{
     font-style: italic;
     color: #66d9ef;
 }
-.function {
-    font-style: italic;
+.routine
+{
     color: #66d9ef;
 }
-.native {
-    color: #f92672;
-}
-.routine {
-    color: #66d9ef;
-}
-.op {
-    color: #f92672;
-}
-.refinement {
-    font-style: italic;
-    color: #66d9ef;
-}
-.char {
+.char,.pair,.numbers,.logic,.get-word,.lit-word
+{
     color: #ae81ff
 }
-.string {
+.string,.issue,.file,.email,.percent,.date,.time
+{
     color: #e6db74;
 }
-.issue {
-    color: #e6db74;
-}
-.file {
-    color: #e6db74;
-}
-.email {
-    color: #e6db74;
-}
-.pair {
-    color: #ae81ff;
-}
-.numbers {
-    color: #ae81ff;
-}
-.logic {
-    color: #ae81ff;
-}
-.percent {
-    color: #ae81ff;
-}
-.date {
-    color: #ae81ff;
-}
-.time {
-    color: #ae81ff;
-}
-.datatype {
-    font-style: italic;
-    color: #66d9ef;
-}
-.setters {
-    color: #FFFFFF;
-}
-.get-word {
-    color: #ae81ff;
-}
-.lit-word {
-    color: #ae81ff;
-}
-.others {
+.setters,.others
+{
     color: #FFFFFF;
 }
