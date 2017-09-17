@@ -70,6 +70,10 @@ to-html: function ["Create syntax highlighted html from Red code"
 ] [
 	unless equal? type? code string! [code: read code]
 
+	; Comment on the last row can not be parsed because it does not include cr lf.
+	; That's why appending crlf temporarily here.
+	append code crlf
+
 	ret: parse code [collect [any [
 				copy val comment keep (get-tag val 'comment)
 				| keep spaces
@@ -97,7 +101,7 @@ to-html: function ["Create syntax highlighted html from Red code"
 		]
 	]
 
-	pre-section: rejoin ["<pre><code>" rejoin ret "</code></pre>"]
+	pre-section: rejoin ["<pre><code>" trim/tail rejoin ret "</code></pre>"]
 
 	either header [
 		rejoin [
