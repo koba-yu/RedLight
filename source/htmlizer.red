@@ -57,9 +57,9 @@ comment: [";" thru cr-lf]
 
 esc-chars: make hash! [#"^"" "&quot;" #"&" "&amp;" #"<" "&lt;" #">" "&gt;"]
 get-tag: function [val type] [
-	keyword-type: select keywords val
+	type: either keyword-type: select keywords val [keyword-type] [type]
 	val: rejoin collect [foreach c val [keep either esc: select esc-chars c [esc][c]]]
-	rejoin [{<span class="} either keyword-type [keyword-type] [type] {">} val {</span>}]
+	rejoin [{<span class="} type {">} val {</span>}]
 ]
 
 to-html: function ["Create syntax highlighted html from Red code"
