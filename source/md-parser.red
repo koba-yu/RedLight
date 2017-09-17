@@ -5,9 +5,9 @@ Red [
 	Tabs:	4
 ]
 
-convert-md: function ["replace markdown file's Red code block to html"
+convert-md: function ["Replace markdown file's Red code block to html"
 	markdown [string! file! url!] "Red code or source file"
-	return: [string!] "converted string"
+	return: [string!] "Converted string"
 ] [
 	unless equal? type? markdown string! [markdown: read markdown]
 	cr-lf: charset reduce [cr lf]

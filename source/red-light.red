@@ -5,9 +5,5 @@ Red [
 	Tabs:	4
 ]
 
-_red-light: context [
-	to-html: do %htmlizer.red
-	convert-md: do %md-parser.red
-]
-to-html: get in _red-light 'to-html
-convert-md: get in _red-light 'convert-md
+to-html: get in context [to-html: do %htmlizer.red] 'to-html
+convert-md: get in context [convert-md: do %md-parser.red] 'convert-md
