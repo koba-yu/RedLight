@@ -39,7 +39,7 @@ quote-string: [{"} thru {"}]
 curly-string: ["{" thru "}"]
 string: [quote-string | curly-string]
 
-word-letter: charset ["0123456789" #"a" - #"z" #"A" - #"Z" "-" "." "_" "=" "<" ">" "+" "-" "|" "*"]
+word-letter: charset compose [not (rejoin [cr lf crlf tab { 　?:'/@#()[];%"}])]
 word-letters: [some word-letter]
 word: [word-letters "?" | word-letters]
 set-word: [word-letters ":"]

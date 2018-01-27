@@ -12,7 +12,7 @@ convert-md: function ["Replace markdown file's Red code block to html"
 	unless equal? type? markdown string! [markdown: read markdown]
 	cr-lf: charset reduce [cr lf]
 	rejoin parse markdown [collect [any [
-				"```red" cr-lf copy code-block thru "```" keep (to-html code-block)
+				"```red" cr-lf copy code-block to "```" keep (to-html code-block) "```"
 				| keep to "```red"
 			]
 		]
